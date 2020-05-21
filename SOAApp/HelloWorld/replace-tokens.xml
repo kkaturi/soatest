@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="EA_SOA_Build"  default="replaceConfig">
+	
+	<!--loadproperties srcFile="build.properties"/-->
+
+	<target name="replaceSOAConfig">
+	
+		<echo>Replacing tokens in configuration file</echo>
+		
+		<!-- Following logic copies the dev deployment plan and generates one to meet the target environment. -->
+		<delete failonerror="true" file="${fmw.app.basedir}/${fmw.composite.name}_cfgplan_generated.xml"/>
+		<copy overwrite="true" failonerror="true" 
+			file  ="${fmw.app.basedir}/${fmw.composite.name}_cfgplan.xml" 
+			tofile="${configplan.target.path}/${fmw.composite.name}_cfgplan_generated.xml"/>
+			
+		<replace file="${configplan.target.path}/${fmw.composite.name}_cfgplan_generated.xml"> 
+			  
+			  <!-- replace filter for soa source and target endpoints. -->
+			  <replacefilter token="dmnh1i.manheim.com" value="dmnh2i.manheim.com" />
+			  
+		</replace>
+		
+	</target>
+	
+	<!--
+	commented for this multi scms soa_dir
+	${fmw.app.basedir}/${fmw.composite.name} will be used as ${fmw.app.basedir} in the above.
+	if no multi scm.. uncomment and use this block
+	<target name="replaceSOAConfig">
+	
+		<echo>Replacing tokens in configuration file</echo>
+		
+		<delete failonerror="true" file="${fmw.app.basedir}/${fmw.composite.name}/${fmw.composite.name}_cfgplan_generated.xml"/>
+		<copy overwrite="true" failonerror="true" 
+			file  ="${fmw.app.basedir}/${fmw.composite.name}/${fmw.composite.name}_cfgplan.xml" 
+			tofile="${configplan.target.path}/${fmw.composite.name}_cfgplan_generated.xml"/>
+			
+		<replace file="${configplan.target.path}/${fmw.composite.name}_cfgplan_generated.xml"> 
+			  
+			  <replacefilter token="dmnh1i.manheim.com" value="dmnh2i.manheim.com" />
+			  
+		</replace>
+		
+	</target>
+	-->
+	
+<!--
+	<target name="replaceMDSConfig">
+	
+		<echo>Replacing tokens in configuration file</echo>
+		
+		<delete failonerror="true" file="${adf.config.basedir}/adf-config.xml"/>
+		<copy overwrite="true" failonerror="true" 
+			file  ="${adf.config.basedir}/adf-config-basefile.xml" 
+			tofile="${adf.config.basedir}/adf-config.xml"/>
+			
+		<replace file="${adf.config.basedir}/adf-config.xml"> 
+			  
+			  <replacefilter token="@db.user@" value="DEV_MDS" />
+			  <replacefilter token="@db.password@" value="admin" />
+			  <replacefilter token="@db.url@" value="jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = KRKATURI-IN.idc.oracle.com)(PORT = 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = XE)))" />
+			  <replacefilter token="@partition@" value="soa-infra" />
+			  
+		</replace>
+		
+	</target>
+-->	
+</project>

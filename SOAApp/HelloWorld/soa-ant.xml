@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         <!--
+           This POM was automatically generated during SOA project creation.           
+           This POM relates to this SOA Composite, i.e. the one in this same directory.
+           There is another POM in the SOA Application directory which handles
+           the whole SOA Application, which may contain additional projects. 
+        -->
+
+	<modelVersion>4.0.0</modelVersion>
+    <groupId>OVCApp</groupId>
+    <artifactId>MDS</artifactId>
+	<version>1.0</version>
+<!--
+    <packaging>jar</packaging>
+    -->
+	 <build>
+        <plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>deployMDS</id>
+						<phase>pre-integration-test</phase>
+						<inherited>false</inherited>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<property file="build-${env}.properties"/>
+								<ant antfile="${oracle.home}/soa/bin/ant-sca-deploy.xml" inheritAll="false" target="deploy">
+									<property name="mw.home" value="${oracle.home}"/>
+									<property name="serverURL" value="http://${target.hostname}:${target.port}"/>
+									<property name="user" value="{}"/>
+									<property name="password" value="{}"/>
+									<property name="overwrite" value="true"/>
+									<property name="forceDefault" value="true"/>
+									<property name="sarLocation" value="${soa.app.source}/${compositeName}/deploy/sca_${compositeName}_rev${revision}.jar"/>
+								</ant> 
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>		
+        </plugins>
+    </build>
+</project>
