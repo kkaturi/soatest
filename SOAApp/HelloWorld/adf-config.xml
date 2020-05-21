@@ -24,7 +24,8 @@
           </metadata-store-usage-->
           <metadata-store-usage id="mstore-usage_2">
             <metadata-store class-name="oracle.mds.persistence.stores.file.FileMetadataStore">
-              <property name="metadata-path" value="../../mds_dir/SOAMDS/src"/>
+              <!--property name="metadata-path" value="../../mds_dir/SOAMDS/src"/-->
+			  <property name="metadata-path" value="D:/CAPG/Practice/GithubLocal/soamdstest/SOAMDS/src"/>
             </metadata-store>
           </metadata-store-usage>
         </metadata-store-usages>
