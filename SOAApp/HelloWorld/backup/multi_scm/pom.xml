@@ -33,8 +33,9 @@
 		<!--project.artifactId>POCISG</project.artifactId-->
 		<adf.base.dir>${project.basedir}</adf.base.dir>
 		<!-- commented for this multi scms soa_dir -->
-		<!--scac.input.dir>${project.basedir}\SOA/</scac.input.dir-->
-		<scac.input.dir>${code.basedir}\SOA/</scac.input.dir>
+		<scac.input.dir>${project.basedir}\SOA/</scac.input.dir>
+		<!-- This is for single scm -->
+		<!--scac.input.dir>${code.basedir}\SOA/</scac.input.dir-->
 		<scac.output.dir>${basedir}/target</scac.output.dir>
 		<scac.input>${scac.input.dir}/composite.xml</scac.input>
 		<scac.output>${scac.output.dir}/out.xml</scac.output>
@@ -149,11 +150,11 @@
 						<configuration>
 							<target>
 								<!-- commented for this multi scms soa_dir -->
-								<!--property name="fmw.app.basedir" value="${project.basedir}" /-->
-								<property name="fmw.app.basedir" value="${soa.app.source}" />
+								<property name="fmw.app.basedir" value="${project.basedir}" />
+								<!--property name="fmw.app.basedir" value="${soa.app.source}" /-->
 								<property name="fmw.composite.name" value="${project.artifactId}" />
 								<property name="configplan.target.path" value="${scac.output.dir}" />
-								<ant antfile="${project.basedir}/replace-tokens.xml" target="replaceSOAConfig_Single_SCM" />
+								<ant antfile="${project.basedir}/replace-tokens.xml" target="replaceSOAConfig_Multi_SCM" />
 							</target>
 						</configuration>
 					</execution>

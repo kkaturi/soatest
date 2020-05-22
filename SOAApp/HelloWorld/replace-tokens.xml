@@ -8,8 +8,8 @@
 	commented for this multi scms soa_dir
 	${fmw.app.basedir}/${fmw.composite.name} will be used as ${fmw.app.basedir} in the above.
 	if no multi scm.. uncomment and use this block
-
-	<target name="replaceSOAConfig">
+	-->
+	<target name="replaceSOAConfig_Multi_SCM">
 	
 		<echo>Replacing tokens in configuration file</echo>
 		
@@ -25,8 +25,8 @@
 		</replace>
 		
 	</target>
-		-->
-	<target name="replaceSOAConfig">
+		
+	<target name="replaceSOAConfig_Single_SCM">
 	
 		<echo>Replacing tokens in configuration file</echo>
 		
