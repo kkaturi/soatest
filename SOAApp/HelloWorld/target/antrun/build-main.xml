@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <property file="build-local.properties"/>
+  <property name="fmw.composite.name" value="HelloWorld"/>
+  <property name="configplan.target.path" value="${scac.output.dir}"/>
+  <ant antfile="D:\CAPG\Practice\GithubLocal\soatest\SOAApp\HelloWorld/config-replace-tokens.xml" target="replaceSOAConfig"/>
+</target>
+</project>

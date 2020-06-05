@@ -24,7 +24,10 @@
       <string v="oracle.jdeveloper.model.PathsConfiguration/ResourceBundlesContentSet"/>
    </list>
    <list n="listOfChildren">
+      <hash><url n="URL" path="../../../../Codebase/Development/SOA/CB-BBT-SOA-LegalActionsCollection/CB-BBT-SOA-LegalActionsCollection.jpr"/></hash>
+      <hash><url n="URL" path="../../../../Codebase/Development/SOA/CB-BBT-SOA-NegativeEventCollection/CB-BBT-SOA-NegativeEventCollection.jpr"/></hash>
       <hash><url n="URL" path="HelloWorld/HelloWorld.jpr"/></hash>
+      <hash><url n="URL" path="TestFault/TestFault.jpr"/></hash>
    </list>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">

@@ -1,0 +1,56 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xmlns.atradius.com/common/types"
+            targetNamespace="http://xmlns.atradius.com/common/types" elementFormDefault="qualified"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd" nxsd:version="JSON" nxsd:encoding="US-ASCII">
+  <xsd:element name="header">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="user">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="name" type="xsd:string"/>
+              <xsd:element name="id" type="xsd:string"/>
+              <xsd:element name="key" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="from">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="application" type="xsd:string"/>
+              <xsd:element name="service" type="xsd:string"/>
+              <xsd:element name="department" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="idsession" type="xsd:string"/>
+              <xsd:element name="ip" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="communication" minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="result" minOccurs="0">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="code" type="xsd:string"/>
+                    <xsd:element name="description" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="details" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+                    <xsd:element name="count" type="xsd:int" minOccurs="0"/>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="idmessage" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="idmessageexternal" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="idprocess" type="xsd:integer" minOccurs="0"/>
+              <xsd:element name="receivedat" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="sentat" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:annotation xmlns="">
+    <xsd:appinfo>NXSDSAMPLE=</xsd:appinfo>
+    <xsd:appinfo>USEHEADER=false</xsd:appinfo>
+  </xsd:annotation>
+</xsd:schema>

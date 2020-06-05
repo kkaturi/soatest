@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='BPELProcess1/RestService']</loc>
+      <line>48</line>
+      <col>17</col>
+      <file>D:\CAPG\Practice\GithubLocal\soatest\SOAApp\TestFault\SOA\composite.xml</file>
+      <name>D:\CAPG\Practice\GithubLocal\soatest\SOAApp\TestFault\SOA\composite.xml</name>
+      <fix/>
+      <msg>Schema validation failed with exception "null"</msg>
+   </Fault>
+</Faults>

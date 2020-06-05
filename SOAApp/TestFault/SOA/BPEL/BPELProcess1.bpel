@@ -1,0 +1,84 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer
+
+  Created: Thu Jun 04 20:57:47 IST 2020
+  Author:  krkaturi
+  Type: BPEL 2.0 Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="BPELProcess1" targetNamespace="http://xmlns.oracle.com/SOAApp/TestFault/BPELProcess1"
+         xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:client="http://xmlns.oracle.com/SOAApp/TestFault/BPELProcess1"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="json"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/jms/SOAApp/TestFault/jmsReference"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/jms/CB-BBT-SOA/CB-BBT-SOA-LegalActionsCollection/jmsAuditLog"
+         xmlns:ns4="http://atradius.internal/logAudit/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:ess="http://xmlns.oracle.com/scheduler" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ui="http://xmlns.oracle.com/soa/designer">
+    <!--
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC
+       Set of activities coordinating the flow of messages across the
+       services integrated within this business process
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <import namespace="http://xmlns.oracle.com/pcbpel/adapter/jms/SOAApp/TestFault/jmsReference"
+            location="../WSDLs/jmsReference.wsdl" importType="http://schemas.xmlsoap.org/wsdl/" ui:processWSDL="true"/>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="../WSDLs/RuntimeFault.wsdl"
+            importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <partnerLinks>
+        <partnerLink name="RestService" bpelx:wadl="yes"/>
+        <partnerLink name="RestReference" bpelx:wadl="yes"/>
+        <partnerLink name="jmsReference" partnerLinkType="ns2:Produce_Message_plt" partnerRole="Produce_Message_role"/>
+    </partnerLinks>
+    <variables>
+        <variable name="inputVar" bpelx:json="object"/>
+        <variable name="outputVar" bpelx:json="object"/>
+        <variable name="Invoke2_Produce_Message_InputVariable" messageType="ns3:Produce_Message_msg"/>
+    </variables>
+    <faultHandlers>
+        <catch faultName="bpelx:runtimeFault">
+            <reply name="Reply2" partnerLink="RestService" variable="outputVar" bpelx:method="Method2"
+                   xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+                   xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"/>
+        </catch>
+        <catch faultName="bpelx:bindingFault" faultVariable="faultV" faultMessageType="bpelx:RuntimeFaultMessage">
+            <reply name="Reply2" partnerLink="RestService" variable="outputVar" bpelx:method="Method2"
+                   xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+                   xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"/>
+        </catch>
+        <catch faultName="bpelx:remoteFault" faultVariable="faultVAr" faultMessageType="bpelx:RuntimeFaultMessage">
+            <reply name="Reply2" partnerLink="RestService" variable="outputVar" bpelx:method="Method2"/>
+        </catch>
+    </faultHandlers>
+    <sequence name="main">
+        <receive name="Receive1" partnerLink="RestService" variable="inputVar" bpelx:method="Method2"
+                 createInstance="yes"/>
+        <assign name="Assign1">
+            <copy>
+                <from>ora:getFlowId()</from>
+                <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$Invoke2_Produce_Message_InputVariable.body/ns4:FlowID</to>
+            </copy>
+        </assign>
+        <invoke name="Invoke2_JMS" partnerLink="jmsReference" portType="ns3:Produce_Message_ptt"
+                operation="Produce_Message" inputVariable="Invoke2_Produce_Message_InputVariable"
+                bpelx:invokeAsDetail="no"/>
+
+        <throw name="Throw1" faultName="bpel:selectionFailure"/>
+        <invoke name="Invoke1" bpelx:invokeAsDetail="no" partnerLink="RestReference" inputVariable="inputVar"
+                outputVariable="outputVar" bpelx:method="Method1"/>
+        <reply name="Reply1" partnerLink="RestService" variable="outputVar" bpelx:method="Method2"/>
+    </sequence>
+</process>

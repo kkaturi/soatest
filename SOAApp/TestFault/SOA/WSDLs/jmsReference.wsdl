@@ -1,0 +1,17 @@
+<wsdl:definitions
+     name="jmsReference"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/jms/SOAApp/TestFault/jmsReference"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/jms/SOAApp/TestFault/jmsReference"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:imp1="http://xmlns.oracle.com/pcbpel/adapter/jms/CB-BBT-SOA/CB-BBT-SOA-LegalActionsCollection/jmsAuditLog"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="Produce_Message_plt" >
+    <plt:role name="Produce_Message_role" >
+      <plt:portType name="imp1:Produce_Message_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:import namespace="http://xmlns.oracle.com/pcbpel/adapter/jms/CB-BBT-SOA/CB-BBT-SOA-LegalActionsCollection/jmsAuditLog"
+         location="jmsAuditLog.wsdl"/>
+</wsdl:definitions>

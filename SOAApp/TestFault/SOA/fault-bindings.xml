@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faultPolicyBindings version="2.0.1" xmlns="http://schemas.oracle.com/bpel/faultpolicy">
+
+    <composite faultPolicy="CB-BBT-SOA-Policies"/>
+
+    <component faultPolicy="CB-BBT-SOA-Policies">
+        <name>CreateLegalActionProcess</name>
+    </component>
+
+    <component faultPolicy="CB-BBT-SOA-Policies">
+        <name>TakeActionLegalActionsProcess</name>
+    </component>
+
+    <component faultPolicy="CB-BBT-SOA-Policies">
+        <name>UpdateRejectedLegalActionsProcess</name>
+    </component>
+
+    <component faultPolicy="CB-BBT-SOA-Policies">
+        <name>UpdateApprovedLegalActionsProcess</name>
+    </component>
+
+    <component faultPolicy="CB-BBT-SOA-Policies">
+        <name>CloseLegalActionsProcess</name>
+    </component>
+
+    <reference faultPolicy="CB-BBT-SOA-Policies">
+        <name>TaskManagementUS</name>
+    </reference>
+
+    <reference faultPolicy="CB-BBT-SOA-Policies">
+        <name>InitiateProcessCS</name>
+    </reference>
+
+    <reference faultPolicy="CB-BBT-SOA-Policies">
+        <name>LegalActionsCollectionDS</name>
+    </reference>
+
+    <reference faultPolicy="CB-BBT-SOA-Policies">
+        <name>jmsAuditLog</name>
+    </reference>
+
+    <reference faultPolicy="CB-BBT-SOA-Policies">
+        <name>UpdateTaskDetailsBPS</name>
+    </reference>
+
+    <reference faultPolicy="CB-BBT-SOA-Policies">
+        <name>TaskManagementSoapUS</name>
+    </reference>
+
+    <reference faultPolicy="CB-BBT-SOA-Policies">
+        <name>GenericOperationsBPS</name>
+    </reference>
+
+    <service faultPolicy="CB-BBT-SOA-Policies">
+        <name>CreateLegalActionBPS</name>
+    </service>
+
+    <service faultPolicy="CB-BBT-SOA-Policies">
+        <name>TakeActionLegalActionsBPS</name>
+    </service>
+
+    <service faultPolicy="CB-BBT-SOA-Policies">
+        <name>UpdateRejectedLegalActionsBPS</name>
+    </service>
+
+    <service faultPolicy="CB-BBT-SOA-Policies">
+        <name>UpdateApprovedLegalActionsBPS</name>
+    </service>
+
+    <service faultPolicy="CB-BBT-SOA-Policies">
+        <name>CloseLegalActionsBPS</name>
+    </service>
+</faultPolicyBindings>

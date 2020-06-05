@@ -61,30 +61,26 @@
       <value n="oracle.toplink.workbench.addin.migration.TopLinkProjectMigrator" v="11.1.1.1.0"/>
    </hash>
    <list n="contentSets">
-      <string v="oracle.jdeveloper.model.PathsConfiguration/javaContentSet"/>
-      <string v="oracle.ide.model.ResourcePaths/resourcesContentSet"/>
       <string v="oracle.mds.internal.dt.ide.MDSLibraryCustCSProvider/mdsContentSet"/>
       <string v="oracle.mds.internal.dt.ide.MDSADFLibVirtualNodeCSProvider/mdsLibVirtualNodeContentSet"/>
       <string v="oracle.jdeveloper.model.J2eeSettings/webContentSet"/>
+      <string v="oracle.jdeveloper.model.PathsConfiguration/javaContentSet"/>
+      <string v="oracle.ide.model.ResourcePaths/resourcesContentSet"/>
       <string v="oracle.jdeveloper.offlinedb.model.OfflineDBProjectSettings/offlineDBContentSet"/>
       <string v="oracle.adfdtinternal.model.ide.settings.ADFMSettings/adfmContentSet"/>
-      <string v="oracle.bm.commonIde.data.project.ModelerProjectSettings/modelersContentSet"/>
-      <string v="oracle.jdeveloper.model.PathsConfiguration/cepContentSet"/>
       <string v="oracle.tip.tools.ide.fabric.addin.SCAContentSetProvider/sca-content"/>
-      <string v="oracle.sb.tooling.ide.core.projects.SbProjectSettings/sbContentSet"/>
+      <string v="oracle.jdeveloper.model.PathsConfiguration/cepContentSet"/>
+      <string v="oracle.bm.commonIde.data.project.ModelerProjectSettings/modelersContentSet"/>
       <string v="oracle.toplink.workbench.addin/toplinkContentSet"/>
+      <string v="oracle.sb.tooling.ide.core.projects.SbProjectSettings/sbContentSet"/>
       <string v="oracle.tip.tools.ide.ess.addin.ESSContentSetProvider/ess-content"/>
       <string v="oracle.bpm.fusion.studio.BPMProjectSettings/bpmProjectsProcessesContentSet"/>
    </list>
-   <value n="defaultPackage" v="helloworld"/>
+   <value n="defaultPackage" v="testfault"/>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
-         <string v="Maven"/>
          <string v="SOA"/>
-         <string v="WSDL"/>
-         <string v="WSPolicy"/>
          <string v="XML"/>
-         <string v="XML_SCHEMA"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
@@ -109,10 +105,6 @@
          <string v=".xsl"/>
          <string v=".exm"/>
          <string v=".xml"/>
-         <string v=".exm"/>
-         <string v=".xml"/>
-         <string v=".exm"/>
-         <string v=".xml"/>
       </list>
       <list n="excludedUrls">
          <string v="fXSLNonDeployedFiles"/>
@@ -121,7 +113,7 @@
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
-         <hash n="HelloWorld">
+         <hash n="TestFault">
             <hash n="archiveOptions">
                <value n="hasManifest" v="false"/>
             </hash>
@@ -208,21 +200,18 @@
                   </hash>
                </list>
             </hash>
-            <url n="jarURL" path="deploy/sca_HelloWorld.jar"/>
+            <url n="jarURL" path="deploy/sca_TestFault.jar"/>
             <value n="profileClass" v="oracle.tip.tools.ide.fabric.deploy.sar.SarProfile"/>
-            <value n="profileName" v="HelloWorld"/>
+            <value n="profileName" v="TestFault"/>
          </hash>
       </hash>
       <list n="profileList">
-         <string v="HelloWorld"/>
+         <string v="TestFault"/>
       </list>
    </hash>
-   <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
-      <url n="pomfileURL" path="pom.xml"/>
-   </hash>
    <hash n="oracle.jdeveloper.model.J2eeSettings">
-      <value n="j2eeWebAppName" v="SOAApp-HelloWorld-webapp"/>
-      <value n="j2eeWebContextRoot" v="SOAApp-HelloWorld-context-root"/>
+      <value n="j2eeWebAppName" v="SOAApp-TestFault-webapp"/>
+      <value n="j2eeWebContextRoot" v="SOAApp-TestFault-context-root"/>
    </hash>
    <hash n="oracle.jdeveloper.model.PathsConfiguration">
       <hash n="javaContentSet">
@@ -310,5 +299,5 @@
          </list>
       </hash>
    </hash>
-   <value n="SCA_BPEL_FOLDER_PROPERTY_NAME" v=""/>
+   <value n="SCA_BPEL_FOLDER_PROPERTY_NAME" v="BPEL/"/>
 </jpr:project>

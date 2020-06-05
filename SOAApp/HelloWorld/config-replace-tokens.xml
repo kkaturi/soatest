@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="SOA_Build"  default="replaceSOAConfig">
+	
+	<target name="replaceSOAConfig">
+	
+		<echo>Replacing tokens in configuration file</echo>
+		
+		<replace file="${fmw.composite.name}_cfgplan.xml"> 
+			  
+			  <replacefilter token="NotRequired" value="${target.hostname}" />
+			  
+		</replace>
+		
+	</target>
+		
+</project>
